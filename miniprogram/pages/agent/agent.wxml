@@ -1,0 +1,25 @@
+<view class="page agent-page">
+  <view class="eyebrow">ASK · RETRIEVE · UNDERSTAND</view><view class="title">和循跑助手聊聊</view><view class="subtitle">先查本地资料，再给有出处的解释。</view>
+  <view wx:if="{{error}}" class="note danger">{{error}}<button wx:if="{{!status}}" class="secondary" bindtap="refresh">重新连接</button></view>
+  <view wx:if="{{status}}" class="card">
+    <view class="badge">{{status.configured ? status.modelLabel : '本地检索可用 · 模型待配置'}}</view>
+    <view class="muted" style="margin-top:14rpx">{{status.knowledge.snippets}} 个知识片段 · {{status.knowledge.reviewedCards}} 张来源概括卡</view>
+    <view class="row line"><text>使用 DeepSeek 解释</text><switch color="#176b53" checked="{{useRemoteModel}}" disabled="{{!status.configured || busy}}" bindchange="remote"/></view>
+    <view class="row line"><text>参考我的训练记录</text><switch color="#176b53" checked="{{useTrainingContext}}" disabled="{{!trainingAvailable || busy}}" bindchange="context"/></view>
+    <view class="row line"><text>本地检索原书 OCR 片段</text><switch color="#176b53" checked="{{includeOriginal}}" disabled="{{useRemoteModel || busy}}" bindchange="original"/></view>
+    <view wx:if="{{!trainingAvailable}}" class="muted">当前跑步页面为本地体验，对话只参考知识库。切换为后端数据模式后，可选择训练摘要。</view>
+    <view class="muted">对话最多保留最近 40 条。模型默认使用概括卡；原书片段只在本地模式查询，OCR、图表与内容仍需专业人工审校。</view>
+  </view>
+  <view wx:if="{{!messages.length}}" class="card"><view class="card-title">可以从这些问题开始</view><view class="link line" wx:for="{{starters}}" wx:key="*this" data-text="{{item}}" bindtap="starter">{{item}}</view></view>
+  <scroll-view scroll-y="true" class="chat-scroll" scroll-into-view="{{toMessage}}" scroll-with-animation="true">
+    <view wx:for="{{messages}}" wx:key="id" id="message-{{item.id}}" class="chat-message {{item.role === 'user' ? 'chat-user' : 'chat-assistant'}}">
+      <view class="muted">{{item.role === 'user' ? '你' : '循跑助手 · ' + item.modeLabel}}</view>
+      <text class="chat-content" selectable="true">{{item.content}}</text>
+      <view wx:if="{{item.notice}}" class="note">{{item.notice}}</view>
+      <view wx:if="{{item.tools.length}}" class="muted">已用工具：{{item.tools}}</view>
+      <view wx:for="{{item.citations}}" wx:for-item="source" wx:key="id" class="chat-citation"><view>{{source.title}}</view><view class="muted">{{source.chapter}} · {{source.evidence}}</view><view wx:if="{{source.pdfPages.length}}" class="muted">PDF 页序号 {{source.pdfPages}}</view><view wx:if="{{source.limits}}" class="note">{{source.limits}}</view><view wx:if="{{source.excerpt}}" class="muted">{{source.excerpt}}</view><view wx:if="{{source.url}}" class="link" data-url="{{source.url}}" bindtap="copySource">复制来源链接</view></view>
+      <view wx:if="{{item.uncertainty}}" class="muted">{{item.uncertainty}}</view>
+    </view>
+  </scroll-view>
+  <view class="card"><textarea class="chat-input" value="{{input}}" bindinput="input" maxlength="1500" placeholder="问一个训练问题，或继续追问上一条回答…" auto-height="true" disabled="{{busy}}"/><button class="primary" bindtap="send" loading="{{busy}}" disabled="{{busy || !input || !status}}">{{busy ? '正在检索与回答…' : '发送问题'}}</button><view class="row"><view class="link" bindtap="knowledge">阅读知识卡</view><view class="link" bindtap="clear">清除对话</view></view></view>
+</view>

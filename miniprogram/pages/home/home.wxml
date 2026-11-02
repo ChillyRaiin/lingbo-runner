@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="eyebrow">XUNRUN · 循跑</view>
+  <view class="title">让每次跑步有依据</view>
+  <view class="subtitle">先了解今天的身体，再决定今天的训练。</view>
+  <view wx:if="{{isDemo}}" class="note">本地体验模式 · 初始为示例数据，录入个人信息后自动清除示例。数据仅存本机。</view>
+  <view wx:if="{{loading}}" class="empty">正在读取记录…</view>
+  <view wx:if="{{error}}" class="note danger">{{error}}<button class="secondary" bindtap="reload">重试</button></view>
+  <block wx:if="{{overview}}">
+    <view class="card hero">
+      <view class="muted">今日训练状态 · {{overview.today}}</view>
+      <view class="card-title" style="font-size:40rpx;margin-top:18rpx;">{{overview.readiness.label}}</view>
+      <view class="bullet">{{overview.readiness.guidance}}</view>
+      <view class="muted">{{overview.readiness.confidence}}</view>
+      <button class="secondary" bindtap="openLog">记录今日感受</button>
+    </view>
+    <view class="card">
+      <view class="row"><view class="card-title">最近 7 天</view><view class="badge">{{overview.load.count}} 次跑步</view></view>
+      <view class="grid">
+        <view class="metric"><view class="label">已记录跑量 / km</view><view class="value">{{overview.load.weeklyKm}}</view></view>
+        <view class="metric"><view class="label">已知 sRPE 负荷 / AU</view><view class="value">{{overview.load.loadAu === null ? '—' : overview.load.loadAu}}</view></view>
+      </view>
+      <view class="bar-chart"><view wx:for="{{overview.load.bins}}" wx:key="date" class="bar-item"><view class="bar" style="height:{{item.height}}rpx"></view><view class="bar-label">{{item.label}}</view></view></view>
+      <view class="muted" style="margin-top:22rpx">{{overview.load.missingRpeCount}} 条记录缺少 RPE。训练负荷不等同于伤病风险。</view>
+    </view>
+    <view class="card">
+      <view class="row"><view class="card-title">当前能力参考</view><view class="badge">VDOT 基线</view></view>
+      <block wx:if="{{overview.ability.available}}"><view class="large">{{overview.ability.score}}</view><view class="muted">E 跑近似配速 {{overview.ability.easyPace}}</view><view class="muted">依据 {{overview.ability.basis.date}} 的 {{overview.ability.basis.distanceKm}} km 比赛/测试</view></block>
+      <view wx:else class="empty">{{overview.ability.reason}}</view>
+    </view>
+    <view class="card"><view class="card-title">为什么这样练？</view><view class="muted">训练目的、当前能力与恢复原则，都应有可追溯的来源。</view><view class="link" bindtap="openKnowledge">查看知识与出处 →</view><button class="secondary" bindtap="openAgent">和循跑助手聊聊</button></view>
+    <button class="primary" bindtap="openPlan">查看基础周草案</button>
+  </block>
+</view>

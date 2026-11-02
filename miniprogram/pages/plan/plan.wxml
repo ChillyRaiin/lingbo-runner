@@ -1,0 +1,13 @@
+<view class="page">
+  <view class="eyebrow">TRAIN WITH PURPOSE</view><view class="title">先建立稳定的基础</view><view class="subtitle">依据近期跑量与今日状态生成，逐日重新评估。</view>
+  <view class="note">当前为基础周草案，不是完整备赛周期。T / I / R 训练与马拉松专项课待教练校验后加入。</view>
+  <view wx:if="{{loading}}" class="empty">正在读取训练建议…</view>
+  <view wx:if="{{error}}" class="note danger">{{error}}<button class="secondary" bindtap="reload">重试</button></view>
+  <block wx:if="{{plan}}">
+    <view wx:if="{{!plan.available}}" class="card"><view class="empty">{{plan.reason}}</view><button class="secondary" bindtap="openProfile">完善跑者档案</button></view>
+    <block wx:else><view class="card hero"><view class="muted">未来 7 天草案跑量</view><view class="large">{{plan.targetKm}} <text style="font-size:28rpx">km</text></view><view>不自动增加近期稳定跑量</view></view>
+      <view class="card timeline" wx:for="{{plan.days}}" wx:key="date"><view class="row"><view class="muted">{{item.date}}</view><view class="badge">{{item.type}}</view></view><view class="card-title" style="margin-top:16rpx">{{item.title}}</view><view class="bullet">{{item.purpose}}</view><view class="muted">{{item.pace}} · {{item.condition}}</view></view>
+    </block>
+    <view class="card"><view class="card-title">生成依据与边界</view><view class="bullet" wx:for="{{plan.notes}}" wx:key="*this">{{item}}</view><view class="link" bindtap="openKnowledge">阅读来源 →</view></view>
+  </block>
+</view>

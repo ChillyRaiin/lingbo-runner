@@ -1,0 +1,13 @@
+<view class="page">
+  <view class="eyebrow">YOUR RUNNING CONTEXT</view><view class="title">把训练放回你的生活</view><view class="subtitle">先填写真实起点，再安排可持续的训练。</view>
+  <view class="card"><view class="row"><view class="card-title">运动数据处理</view><view class="badge">{{granted ? '已同意' : '待同意'}}</view></view><view class="muted">{{isDemo ? '本地体验：个人记录存储于此设备。' : '后端模式：授权后将运动与状态记录发送至配置的服务端。'}}</view><view wx:if="{{containsExamples}}" class="note">目前显示示例档案。保存个人信息后清除示例，避免混用。</view><button class="secondary" bindtap="privacy">查看说明并选择授权</button></view>
+  <view class="card"><view class="card-title">跑者档案</view>
+    <view class="label">最近至少 4 周稳定周跑量 / km</view><input class="input" type="digit" value="{{form.weeklyKm}}" data-key="weeklyKm" bindinput="input" placeholder="例如 30"/>
+    <view class="label">每周可训练天数 / 2～6</view><input class="input" type="number" value="{{form.daysPerWeek}}" data-key="daysPerWeek" bindinput="input" placeholder="例如 4"/>
+    <view class="label">连续稳定训练了多少周 / 0～260</view><input class="input" type="number" value="{{form.weeksConsistent}}" data-key="weeksConsistent" bindinput="input" placeholder="例如 12"/>
+    <view class="label">长期目标项目（首版暂不生成专项周期）</view><picker range="{{goalLabels}}" value="{{goalIndex}}" bindchange="goal"><view class="picker">{{goalLabels[goalIndex]}}</view></picker>
+    <view class="row"><text>我已满 18 周岁</text><switch color="#176b53" checked="{{form.isAdult}}" bindchange="adult"/></view><button class="primary" bindtap="save">保存跑者档案</button>
+  </view>
+  <view class="card"><view class="card-title">数据来源与接入进度</view><button class="primary" bindtap="appleHealth">连接 Apple Watch / Apple 健康</button><view class="line" wx:for="{{providers}}" wx:key="id"><view class="row"><text>{{item.title}}</text><view class="badge">{{item.status === 'available' ? '可用' : '待接入/配置'}}</view></view><view class="muted">{{item.description}}</view></view><button class="secondary" bindtap="syncSteps">授权同步微信步数</button><view class="muted">微信步数仅用于日常活动展示。</view></view>
+  <view class="card"><view class="card-title">知识与数据管理</view><view class="link" bindtap="knowledge">知识库与书目 →</view><button class="secondary" bindtap="exportData">导出个人数据 JSON</button><button class="destructive" bindtap="revoke">撤回授权并清除运动数据</button><button class="destructive" bindtap="remove">删除全部账户数据</button><button wx:if="{{isDemo}}" class="secondary" bindtap="resetDemo">恢复示例数据</button></view>
+</view>

@@ -1,0 +1,32 @@
+// !$*UTF8*$!
+{ archiveVersion = 1; classes = {}; objectVersion = 56; objects = {
+8EFDD8FE87E9B486EA7C0EA2 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BridgeAPI.swift"; sourceTree = "<group>"; };
+4DFAEB2A50A36BE2526037A3 = { isa = PBXBuildFile; fileRef = 8EFDD8FE87E9B486EA7C0EA2; };
+709163852BCDD888C6716E1C = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView.swift"; sourceTree = "<group>"; };
+879FDE897C285471E1175FC8 = { isa = PBXBuildFile; fileRef = 709163852BCDD888C6716E1C; };
+9E5E0725A3E7B71A5741E2AB = { isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "HealthBridge.entitlements"; sourceTree = "<group>"; };
+99D328BB09D8237790795B1E = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthBridgeApp.swift"; sourceTree = "<group>"; };
+94ECE6BCEF9A9611709B3C74 = { isa = PBXBuildFile; fileRef = 99D328BB09D8237790795B1E; };
+E6823EB8BB66325427DBD5B1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthSyncController.swift"; sourceTree = "<group>"; };
+2AB206971F155833006768D3 = { isa = PBXBuildFile; fileRef = E6823EB8BB66325427DBD5B1; };
+CEB4C0D50A9C80C9E9BD66EB = { isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info.plist"; sourceTree = "<group>"; };
+290E4E0BA8191E6B65506E0B = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeychainStore.swift"; sourceTree = "<group>"; };
+274B82485CA15812AB75D54D = { isa = PBXBuildFile; fileRef = 290E4E0BA8191E6B65506E0B; };
+CA07003DC14BE99C0B694A58 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Models.swift"; sourceTree = "<group>"; };
+5438F6952B2A53255241A6E8 = { isa = PBXBuildFile; fileRef = CA07003DC14BE99C0B694A58; };
+A8792157CB4F27FB949C035F = { isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HealthBridge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+878A52FC5FF6A57D50B7B870 = { isa = PBXGroup; children = (8EFDD8FE87E9B486EA7C0EA2,709163852BCDD888C6716E1C,9E5E0725A3E7B71A5741E2AB,99D328BB09D8237790795B1E,E6823EB8BB66325427DBD5B1,CEB4C0D50A9C80C9E9BD66EB,290E4E0BA8191E6B65506E0B,CA07003DC14BE99C0B694A58,); path = HealthBridge; sourceTree = "<group>"; };
+0A3E27B8CA818264D75C8D81 = { isa = PBXGroup; children = (A8792157CB4F27FB949C035F,); name = Products; sourceTree = "<group>"; };
+0D6E4079E36703EBD37C0072 = { isa = PBXGroup; children = (878A52FC5FF6A57D50B7B870,0A3E27B8CA818264D75C8D81,); sourceTree = "<group>"; };
+D626F04DF571B9BB2451CBFE = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (4DFAEB2A50A36BE2526037A3,879FDE897C285471E1175FC8,94ECE6BCEF9A9611709B3C74,2AB206971F155833006768D3,274B82485CA15812AB75D54D,5438F6952B2A53255241A6E8,); runOnlyForDeploymentPostprocessing = 0; };
+951DDECB505D289B8BC956E6 = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+5C2473E515024614E403B8B9 = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+488864B3D19480A82F7F1786 = { isa = XCBuildConfiguration; buildSettings = {SDKROOT = iphoneos;IPHONEOS_DEPLOYMENT_TARGET = "17.0";CLANG_ENABLE_MODULES = YES;SWIFT_VERSION = "5.0";SWIFT_OPTIMIZATION_LEVEL = "-Onone";DEBUG_INFORMATION_FORMAT = "dwarf";}; name = Debug; };
+952548237D7F645F11D1E7B6 = { isa = XCBuildConfiguration; buildSettings = {PRODUCT_NAME = "$(TARGET_NAME)";PRODUCT_BUNDLE_IDENTIFIER = "com.yutian.xunrun.healthbridge";CODE_SIGN_STYLE = Automatic;CODE_SIGN_ENTITLEMENTS = "HealthBridge/HealthBridge.entitlements";INFOPLIST_FILE = "HealthBridge/Info.plist";GENERATE_INFOPLIST_FILE = NO;TARGETED_DEVICE_FAMILY = "1";SWIFT_EMIT_LOC_STRINGS = YES;}; name = Debug; };
+35B1014F135DE9B45529B733 = { isa = XCBuildConfiguration; buildSettings = {SDKROOT = iphoneos;IPHONEOS_DEPLOYMENT_TARGET = "17.0";CLANG_ENABLE_MODULES = YES;SWIFT_VERSION = "5.0";SWIFT_OPTIMIZATION_LEVEL = "-O";DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";}; name = Release; };
+E2D3A31BEAA1368FC62DA77A = { isa = XCBuildConfiguration; buildSettings = {PRODUCT_NAME = "$(TARGET_NAME)";PRODUCT_BUNDLE_IDENTIFIER = "com.yutian.xunrun.healthbridge";CODE_SIGN_STYLE = Automatic;CODE_SIGN_ENTITLEMENTS = "HealthBridge/HealthBridge.entitlements";INFOPLIST_FILE = "HealthBridge/Info.plist";GENERATE_INFOPLIST_FILE = NO;TARGETED_DEVICE_FAMILY = "1";SWIFT_EMIT_LOC_STRINGS = YES;}; name = Release; };
+AD1646610FAAB916B1DAB3FC = { isa = XCConfigurationList; buildConfigurations = (488864B3D19480A82F7F1786,35B1014F135DE9B45529B733,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+9C5B038A078AB1DFD15318F0 = { isa = XCConfigurationList; buildConfigurations = (952548237D7F645F11D1E7B6,E2D3A31BEAA1368FC62DA77A,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+34A04005BCAF206EEC990BD9 = { isa = PBXNativeTarget; buildConfigurationList = 9C5B038A078AB1DFD15318F0; buildPhases = (D626F04DF571B9BB2451CBFE,951DDECB505D289B8BC956E6,5C2473E515024614E403B8B9,); buildRules = (); dependencies = (); name = HealthBridge; productName = HealthBridge; productReference = A8792157CB4F27FB949C035F; productType = "com.apple.product-type.application"; };
+244210E48437B6556980A702 = { isa = PBXProject; attributes = {LastUpgradeCheck = 1500; TargetAttributes = {34A04005BCAF206EEC990BD9 = {CreatedOnToolsVersion = "15.0"; SystemCapabilities = {com.apple.HealthKit = {enabled = 1;};};};};}; buildConfigurationList = AD1646610FAAB916B1DAB3FC; compatibilityVersion = "Xcode 14.0"; developmentRegion = "zh-Hans"; hasScannedForEncodings = 0; knownRegions = ("en","zh-Hans",Base,); mainGroup = 0D6E4079E36703EBD37C0072; productRefGroup = 0A3E27B8CA818264D75C8D81; projectDirPath = ""; projectRoot = ""; targets = (34A04005BCAF206EEC990BD9,); };
+}; rootObject = 244210E48437B6556980A702; }

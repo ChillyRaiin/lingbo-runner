@@ -1,0 +1,24 @@
+name: XunrunHealthBridge
+options:
+  bundleIdPrefix: com.yutian.xunrun
+  deploymentTarget:
+    iOS: "17.0"
+targets:
+  HealthBridge:
+    type: application
+    platform: iOS
+    sources:
+      - path: HealthBridge
+        excludes: [Info.plist, HealthBridge.entitlements]
+    info:
+      path: HealthBridge/Info.plist
+    entitlements:
+      path: HealthBridge/HealthBridge.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yutian.xunrun.healthbridge
+        SWIFT_VERSION: "5.0"
+        CODE_SIGN_STYLE: Automatic
+        TARGETED_DEVICE_FAMILY: "1"
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"

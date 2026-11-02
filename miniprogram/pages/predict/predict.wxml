@@ -1,0 +1,12 @@
+<view class="page">
+  <view class="eyebrow">PERFORMANCE · WITH CONTEXT</view><view class="title">能力可以估算，PB 需要验证</view><view class="subtitle">以近期比赛为基准，查看不同距离的等效表现。</view>
+  <view class="note">PB 预测模块的首版只实现 VDOT 等效成绩。尚未校准个人实赛预测，也未估计破 PB 的概率。</view>
+  <view wx:if="{{loading}}" class="empty">正在读取能力参考…</view>
+  <view wx:if="{{error}}" class="note danger">{{error}}<button class="secondary" bindtap="reload">重试</button></view>
+  <block wx:if="{{ability}}"><view wx:if="{{!ability.available}}" class="card"><view class="empty">{{ability.reason}}</view><button class="secondary" bindtap="openLog">录入比赛 / 测试记录</button></view>
+    <block wx:else><view class="card hero"><view class="muted">近期比赛所对应的 VDOT</view><view class="large">{{ability.score}}</view><view class="muted">{{ability.basis.date}} · {{ability.basis.distanceKm}} km</view></view>
+      <view class="card" wx:for="{{ability.equivalents}}" wx:key="event"><view class="row"><view class="card-title">{{labels[item.event]}}</view><view class="badge">等效参考</view></view><view class="large" style="font-size:56rpx">{{item.time}}</view><view class="muted">{{item.pace}} · 历史 PB {{item.historicalPb}}</view><view class="split"></view><view class="muted">{{item.warning}}</view><view class="muted">{{item.confidence}}</view></view>
+      <view class="card"><view class="muted">{{ability.limitation}}</view><view class="muted">模型版本 {{ability.modelVersion}}</view></view>
+    </block>
+  </block>
+</view>

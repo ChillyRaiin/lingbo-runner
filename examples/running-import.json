@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "provider": "file",
+  "activities": [
+    { "externalId": "synthetic-example-20261001-5k", "sport": "running", "date": "2026-10-01", "distanceKm": 5, "durationSec": 1500, "rpe": 9, "isRace": true, "avgHr": 165 }
+  ]
+}

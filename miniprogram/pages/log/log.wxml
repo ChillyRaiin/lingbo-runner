@@ -1,0 +1,21 @@
+<view class="page">
+  <view class="eyebrow">LISTEN · RECORD · ADAPT</view><view class="title">记录，是判断的起点</view><view class="subtitle">运动手表提供客观记录，你补充身体感受。</view>
+  <view class="card"><view class="card-title">从 Apple Watch / 运动手表导入</view><view class="muted">Apple 健康 XML/ZIP 或 TCX 在电脑本地转换后，选择生成的跑步 JSON。原始健康导出文件不上传到小程序。</view><button class="secondary" bindtap="importFile">选择跑步 JSON 文件</button></view>
+  <view class="card"><view class="card-title">手动记录一次跑步</view><view class="label">日期</view><picker mode="date" value="{{date}}" end="{{maxDate}}" bindchange="setDate"><view class="picker">{{date}}</view></picker>
+    <view class="label">距离 / km</view><input class="input" type="digit" value="{{run.distanceKm}}" data-group="run" data-key="distanceKm" bindinput="input" placeholder="例如 5.0"/>
+    <view class="label">总时长 / 分钟</view><input class="input" type="digit" value="{{run.durationMin}}" data-group="run" data-key="durationMin" bindinput="input" placeholder="例如 25.5"/>
+    <view class="label">整次训练 RPE / 1～10</view><input class="input" type="digit" value="{{run.rpe}}" data-group="run" data-key="rpe" bindinput="input" placeholder="1 很轻松，10 最大努力"/>
+    <view class="label">平均心率 / bpm（可不填）</view><input class="input" type="digit" value="{{run.avgHr}}" data-group="run" data-key="avgHr" bindinput="input" placeholder="例如 145"/>
+    <view class="row"><text>比赛 / 有代表性的全力测试</text><switch checked="{{run.isRace}}" color="#176b53" data-group="run" data-key="isRace" bindchange="toggle"/></view><view class="muted">用于 VDOT 和等效成绩计算，普通慢跑请关闭。</view><button class="primary" bindtap="saveRun">保存跑步记录</button>
+  </view>
+  <view class="card"><view class="card-title">今日身体状态</view>
+    <view class="label">昨晚睡眠 / 小时</view><input class="input" type="digit" value="{{checkin.sleepHours}}" data-group="checkin" data-key="sleepHours" bindinput="input" placeholder="例如 7.5"/>
+    <view class="label">疲劳程度 / 1～5（5 很疲劳）</view><input class="input" type="digit" value="{{checkin.fatigue}}" data-group="checkin" data-key="fatigue" bindinput="input"/>
+    <view class="label">肌肉酸痛 / 1～5（1 无酸痛）</view><input class="input" type="digit" value="{{checkin.soreness}}" data-group="checkin" data-key="soreness" bindinput="input"/>
+    <view class="label">局部疼痛 / 0～10（0 无疼痛）</view><input class="input" type="digit" value="{{checkin.pain}}" data-group="checkin" data-key="pain" bindinput="input"/>
+    <view class="row line"><text>正在患病 / 发热</text><switch color="#176b53" checked="{{checkin.illness}}" data-group="checkin" data-key="illness" bindchange="toggle"/></view>
+    <view class="row line"><text>胸痛 / 晕厥 / 异常气短</text><switch color="#176b53" checked="{{checkin.redFlags}}" data-group="checkin" data-key="redFlags" bindchange="toggle"/></view>
+    <view class="note">这些记录用于保守训练调整，不用于疾病诊断。报告明显不适时会暂停自动跑步建议。</view><button class="primary" bindtap="saveCheckin">保存今日状态</button>
+  </view>
+  <view class="card"><view class="card-title">已记录活动</view><view wx:if="{{!activities.length}}" class="empty">还没有活动。先导入或手动记录一次跑步。</view><view wx:for="{{activities}}" wx:key="id" class="line" data-id="{{item.id}}" bindtap="edit"><view class="row"><text>{{item.date}} · {{item.distanceKm}} km</text><text>{{item.timeLabel}}</text></view><view class="muted">{{item.source}} · RPE {{item.rpe === null ? '待补充' : item.rpe}} {{item.isRace ? '· 比赛/测试' : ''}} · 点击编辑</view></view></view>
+</view>

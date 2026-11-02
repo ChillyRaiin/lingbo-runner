@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/home/home", "pages/plan/plan", "pages/log/log", "pages/predict/predict",
+    "pages/profile/profile", "pages/knowledge/knowledge", "pages/privacy/privacy", "pages/agent/agent", "pages/apple-health/apple-health"
+  ],
+  "window": { "navigationBarTitleText": "循跑", "navigationBarBackgroundColor": "#f5f7f4", "navigationBarTextStyle": "black", "backgroundColor": "#f5f7f4" },
+  "tabBar": {
+    "color": "#7a8582", "selectedColor": "#176b53", "backgroundColor": "#ffffff", "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/home/home", "text": "今日" },
+      { "pagePath": "pages/plan/plan", "text": "训练" },
+      { "pagePath": "pages/log/log", "text": "记录" },
+      { "pagePath": "pages/predict/predict", "text": "成绩" },
+      { "pagePath": "pages/profile/profile", "text": "我的" }
+    ]
+  },
+  "permission": { "scope.werun": { "desc": "读取微信运动步数，用于展示日常活动趋势" } },
+  "__usePrivacyCheck__": true,
+  "sitemapLocation": "sitemap.json"
+}

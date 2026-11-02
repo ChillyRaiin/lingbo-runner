@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HealthData [<!ELEMENT HealthData ANY>]>
+<HealthData locale="en_US">
+  <Record type="HKQuantityTypeIdentifierBodyMass" value="70" unit="kg"/>
+  <Record type="HKQuantityTypeIdentifierHeartRate" value="100" unit="count/min"/>
+  <Workout workoutActivityType="HKWorkoutActivityTypeRunning" sourceName="Synthetic Apple Watch" startDate="2026-10-01 23:30:00 +0000" endDate="2026-10-02 00:05:00 +0000" duration="25" durationUnit="min">
+    <WorkoutStatistics type="HKQuantityTypeIdentifierDistanceWalkingRunning" sum="5" unit="km"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate" average="155" unit="count/min"/>
+  </Workout>
+  <Workout workoutActivityType="HKWorkoutActivityTypeCycling" startDate="2026-10-02 08:00:00 +0800" duration="60" durationUnit="min" totalDistance="20" totalDistanceUnit="km"/>
+</HealthData>

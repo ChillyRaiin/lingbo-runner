@@ -1,0 +1,2 @@
+# 仅重新提取PDF时需要；Apple健康/TCX转换和Python测试使用标准库。
+pypdf==6.10.0
